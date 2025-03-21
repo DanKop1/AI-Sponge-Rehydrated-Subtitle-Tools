@@ -4,6 +4,8 @@
 
 ![image](https://github.com/user-attachments/assets/db5ca23d-6a33-43ec-a658-71f549b6e905)
 
+**IMPORTANT**
+All of these apps are intended for function on Python 3.10, they should function on Python 3.9 too, download Python [HERE](https://www.python.org/downloads/)
 
 **Rich Converter**:
 Specifically intended to convert the .ass tags in .ass files into Rich Text tags for stream compatibility

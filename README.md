@@ -23,6 +23,10 @@ _When to use_:
 1) ONLY if you have already converted your Subtitle format (.ass, .srt etc...) to .ytt and need to test your subtitles on Stream - This converts ytt to xml to vtt. If you don't want to generate an XML, do not tick the option for this
 2) If you do not plan to test locally, then do not use this, it will not help you further.
 
+**You must download both files below for the GUI to function**
+
 [Download YTT to VTT Converter](https://github.com/DanKop1/Subtitles/blob/main/YTT2VTT%20Converter.py)
+
+[Download](https://github.com/DanKop1/AI-Sponge-Rehydrated-Subtitle-Tools/blob/main/convert_ytt2vtt.py)
    
 If you experience issues, please contact myself on Discord (Dankop) or one of the staff who will then contact me - I am the sole developer of these scripts and will get back to you when I can

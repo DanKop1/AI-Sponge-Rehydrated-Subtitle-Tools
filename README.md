@@ -5,7 +5,7 @@ _When to use_:
 1) ONLY if your file contains .ass tags that are not standard (e.g {\c&H00FF00&} and need to be converted to the RICH TEXT equivalent (e.g <color=#00FF00>)
 2) If you already use Rich text, do not use this, it won't work.
 
-   
+[Download Rich Converter](https://github.com/DanKop1/Subtitles/blob/main/Rich%20Converter.py)
 
 **YTT to VTT Converter**:
 Specifically intended to convert the .ytt file to .vtt file for the purpose of testing subtitles locally

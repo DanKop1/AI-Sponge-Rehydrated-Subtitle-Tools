@@ -1,30 +1,27 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 import os
-import subprocess
+import re
 
-# GUI Functions
+# GIO Functions
 def browse_file():
-    """Browse for an input .ass file"""
     file_path = filedialog.askopenfilename(filetypes=[("ASS Subtitle Files", "*.ass")])
     if file_path:
         input_path_var.set(file_path)
 
 def browse_output_folder():
-    """Browse for an output folder"""
     folder_path = filedialog.askdirectory()
     if folder_path:
         output_dir_var.set(folder_path)
 
 def convert_file():
-    """Run the conversion process"""
     input_path = input_path_var.get()
     output_dir = output_dir_var.get()
 
     if not input_path or not os.path.isfile(input_path):
         messagebox.showerror("Error", "Please select a valid .ass file.")
         return
-
+    
     # Determine output path
     base_name = os.path.basename(input_path)
     name_only, ext = os.path.splitext(base_name)
@@ -63,59 +60,67 @@ def launch_gui():
 
     root.mainloop()  # Start the GUI
 
-# Conversion function (unchanged from convert_ass.py)
+# Conversion function
 def convert_ass_file(input_file, output_file):
     """Reads an ASS subtitle file, converts it to Rich Text, and writes the modified output to a new file."""
-    import re
-
-    # Define mappings for tag replacements
     TAG_REPLACEMENTS = {
-        r"\\s1": "<s>", r"\\s0": "</s>",  # Strikethrough
-        r"\\b1": "<b>", r"\\b0": "</b>",  # Bold
-        r"\\i1": "<i>", r"\\i0": "</i>",  # Italic
-        r"\\u1": "<u>", r"\\u0": "</u>",  # Underline
-        r"\\fnImpact": '<font="Impact SDF">',  # Font Impact
-        r"\\c": "</color>",  # Color reset (Only where explicitly present)
-        r"\\fs0": "</size>",  # Font size reset
+        r"\\s1": "<s>", r"\\s0": "</s>", #Strikethrough
+        r"\\b1": "<b>", r"\\b0": "</b>", #Bold
+        r"\\i1": "<i>", r"\\i0": "</i>", #Italic
+        r"\\u1": "<u>", r"\\u0": "</u>", #Underline
+        r"\\c": "</color>", # Color reset
+        r"\\fs0": "</size>", # Font Size reset
+        r"\\N": "<br>" # Line break
     }
-
-    def convert_bgr_to_rgb_with_fixed_alpha(match):
-        """Convert BGR hex color (`HXXXXXX&`) to RGB format."""
+    def convert_font_name(match):
+        font_name = match.group(1)
+        if font_name.lower() == "impact":
+            return '<font="Impact SDF">'
+        return f'<font="{font_name}">'
+    
+    def convert_color(match):
         bgr = match.group(1)
-        alpha = match.group(2) if match.group(2) else "FF"
-
-        # Convert BGR to RGB
         rgb = bgr[4:6] + bgr[2:4] + bgr[0:2]
+        return f"<color=#{rgb}>"
 
-        # Flip Alpha if present
-        if match.group(2):
-            alpha = f"{255 - int(alpha, 16):02X}"
-
-        return f"<color=#{rgb}{alpha}>"
+    def convert_alpha(match):
+        hex_alpha = match.group(1)
+        flipped = 255 - int(hex_alpha, 16)
+        return f"<alpha=#{flipped:02X}>"
 
     def convert_font_size(match):
         """Convert `\fsXX` (ASS font size) to `<size=XX>`."""
         return f"<size={match.group(1)}>"
 
-    def process_ass_to_rich_text(ass_text):
+    def process_ass_to_rich_text(text):
         """Converts ASS tags to Rich Text equivalents."""
-        ass_text = re.sub(r"{([^}]*)}", r"\1", ass_text)
-        ass_text = re.sub(r"\\c&H([0-9A-Fa-f]{6})&(?:\\1a&H([0-9A-Fa-f]{2})&)?", convert_bgr_to_rgb_with_fixed_alpha, ass_text)
-        ass_text = re.sub(r"\\fs(\d+)", convert_font_size, ass_text)
+        # Convert \fn, \fs, \c&H, \1a&H etc. within override blocks {...}
+        def override_replacer(match):
+            override = match.group(1)
 
-        for pattern, replacement in TAG_REPLACEMENTS.items():
-            ass_text = re.sub(pattern, replacement, ass_text)
+            # Perform all tag replacements within the override block
+            override = re.sub(r"\\c&H([0-9A-Fa-f]{6})&", convert_color, override)
+            override = re.sub(r"\\1a&H([0-9A-Fa-f]{2})&", convert_alpha, override)
+            override = re.sub(r"\\fs(\d+)", convert_font_size, override)
+            override = re.sub(r"\\fn([^\s\\]+)", convert_font_name, override, flags=re.IGNORECASE)
 
-        return ass_text
+            for pattern, replacement in TAG_REPLACEMENTS.items():
+                override = re.sub(pattern, replacement, override)
 
-    with open(input_file, "r", encoding="utf-8") as file:
-        lines = file.readlines()
+            return override  # no curly braces returned
 
-    processed_lines = [process_ass_to_rich_text(line) if line.startswith("Dialogue:") else line for line in lines]
+        # Replace all {...} tags using override_replacer
+        text = re.sub(r"{([^}]*)}", override_replacer, text)
 
-    with open(output_file, "w", encoding="utf-8") as file:
-        file.writelines(processed_lines)
+        return text
 
-# Run GUI
+    with open(input_file, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+
+    processed = [process_ass_to_rich_text(line) if line.startswith("Dialogue:") else line for line in lines]
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.writelines(processed)
+
 if __name__ == "__main__":
     launch_gui()

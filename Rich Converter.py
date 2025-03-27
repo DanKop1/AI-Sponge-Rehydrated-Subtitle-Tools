@@ -90,7 +90,7 @@ TAG_REPLACEMENTS = {
 def process_ass_to_rich_text(text):
     def override_replacer(match):
         override = match.group(1)
-        override = re.sub(r"\\fn([^\s\\]+)", convert_font_name, override, flags=re.IGNORECASE)
+        override = re.sub(r"\\fn([^\\}]+)", convert_font_name, override, flags=re.IGNORECASE)
         override = re.sub(r"\\fs(\d+)", convert_font_size, override)
         override = re.sub(r"\\c&H([0-9A-Fa-f]{6})&", convert_color, override)
         override = re.sub(r"\\1a&H([0-9A-Fa-f]{2})&", convert_alpha, override)

@@ -25,8 +25,8 @@ _When to use_:
 
 **You must download both files below for the GUI to function**
 
-[Download YTT to VTT Converter](https://github.com/DanKop1/Subtitles/blob/main/YTT2VTT%20Converter.py)
+[Download YTT to VTT Converter GUI](https://github.com/DanKop1/Subtitles/blob/main/YTT2VTT%20Converter.py)
 
-[Download](https://github.com/DanKop1/AI-Sponge-Rehydrated-Subtitle-Tools/blob/main/convert_ytt2vtt.py)
+[Download YTT to VTT Converter SCRIPT](https://github.com/DanKop1/AI-Sponge-Rehydrated-Subtitle-Tools/blob/main/convert_ytt2vtt.py)
    
 If you experience issues, please contact myself on Discord (Dankop) or one of the staff who will then contact me - I am the sole developer of these scripts and will get back to you when I can

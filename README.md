@@ -16,6 +16,11 @@ _When to use_:
 
 [Download Rich Converter](https://github.com/DanKop1/Subtitles/blob/main/Rich%20Converter.py)
 
+**ASS to YTT Converter"":
+Simply launch this app to format your .ass file to ytt. (This is to replace ytsubconverter as it's broken and dysfunctional in certain cases)
+
+[Download ASS to YTT Converter](https://github.com/DanKop1/AI-Sponge-Rehydrated-Subtitle-Tools/blob/main/ASS2YTT%20Converter)
+
 **YTT to VTT Converter**:
 Specifically intended to convert the .ytt file to .vtt file for the purpose of testing subtitles locally
 

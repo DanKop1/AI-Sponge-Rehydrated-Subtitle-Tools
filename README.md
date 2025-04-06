@@ -2,8 +2,6 @@
 
 **TO DOWNLOAD APPS PLEASE NAVIGATE HERE AFTER CLICKING THE LINK:**
 
-""WHEN DOWNLOADING THESE NAMES PLEASE ENSURE THE NAMES YOU ASSIGN THEM ARE THE SAME, DO NOT RENAME THEM**
-
 ![image](https://github.com/user-attachments/assets/db5ca23d-6a33-43ec-a658-71f549b6e905)
 
 **IMPORTANT**
@@ -30,7 +28,7 @@ _When to use_:
 1) ONLY if you have already converted your Subtitle format (.ass, .srt etc...) to .ytt and need to test your subtitles on Stream - This converts ytt to xml to vtt. If you don't want to generate an XML, do not tick the option for this
 2) If you do not plan to test locally, then do not use this, it will not help you further.
 
-**You must download both files below for the GUI to function**
+**You must download both files below for the GUI to function and ensure the names are NOT CHANGED**
 
 [Download YTT to VTT Converter GUI](https://github.com/DanKop1/Subtitles/blob/main/YTT2VTT%20Converter.py)
 

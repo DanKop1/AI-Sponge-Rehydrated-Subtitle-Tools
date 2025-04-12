@@ -1,3 +1,7 @@
+
+
+<size=40>The below files will no longer be supported as they are standalone applications. The primary focus will be on the bundled exe
+
 **PLEASE READ BELOW FOR INFO ON EACH APPLICATION**
 
 **TO DOWNLOAD APPS PLEASE NAVIGATE HERE AFTER CLICKING THE LINK:**

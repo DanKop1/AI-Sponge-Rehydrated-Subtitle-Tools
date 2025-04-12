@@ -1,6 +1,10 @@
 
 
-<size=40>The below files will no longer be supported as they are standalone applications. The primary focus will be on the bundled exe
+The below files will no longer be supported as they are standalone applications. The primary focus will be on the bundled exe
+
+
+__________________________________________________________________________________________
+
 
 **PLEASE READ BELOW FOR INFO ON EACH APPLICATION**
 

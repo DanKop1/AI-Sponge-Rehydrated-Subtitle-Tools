@@ -2,7 +2,8 @@
 ### ![Logo name](https://github.com/user-attachments/assets/584f52c7-ed2c-40fb-b782-384e867438b1)
 
 ## **Unify - Subtitle converter**
-Intended for use between Aegissub and Unity 
+Intended for use between Aegissub and Unity
+ 
 Supports .ass to .ytt to .xml to .vtt
 Supports conversion to Rich text
 

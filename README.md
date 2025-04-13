@@ -7,6 +7,8 @@ Supports conversion to Rich text
 
 This program is entirely managed by Dankop - Any issues to be reported directly to Dankop
 
+[Download Unify - Subtitle Converter](https://github.com/DanKop1/AI-Sponge-Rehydrated-Subtitle-Tools/releases/download/Unify_1.0/Unify.-.Subtitle.Converter.1.0.exe)
+
 __________________________________________________________________________________________
 
 __The below files will no longer be supported as they are standalone applications. The primary focus will be on the bundled exe_

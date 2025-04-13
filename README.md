@@ -5,6 +5,7 @@
 Intended for use between Aegissub and Unity
  
 Supports .ass to .ytt to .xml to .vtt
+
 Supports conversion to Rich text
 
 This program is entirely managed by Dankop - Any issues to be reported directly to Dankop

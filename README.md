@@ -1,5 +1,5 @@
 
-![Logo](https://github.com/user-attachments/assets/cab4df76-2040-4081-9ad7-592555564174)
+![Logo name](https://github.com/user-attachments/assets/584f52c7-ed2c-40fb-b782-384e867438b1)
 
 The below files will no longer be supported as they are standalone applications. The primary focus will be on the bundled exe
 
